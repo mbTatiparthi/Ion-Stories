@@ -1,0 +1,52 @@
+
+<ion-header page-about-us-header class="page-about-us-header">
+	<ion-toolbar color="gray">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+        <ion-title>About Us</ion-title>
+<!--		<ion-segment [(ngModel)]="segmentTab"  class="segment">-->
+<!--			<ion-segment-button value="about-us">About Us</ion-segment-button>-->
+<!--			<ion-segment-button value="licenses">Licenses</ion-segment-button>-->
+<!--		</ion-segment>-->
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-about-us-content class="page-about-us-content " >
+<ion-card  *ngIf="segmentTab=='about-us'">
+	<img src="./assets/images/landscape/image-1.jpg" alt=""/>
+	<ion-card-header>
+		<h1><strong>Online Stories</strong> <small>v01.01.01</small></h1>
+	</ion-card-header>
+	<ion-card-content>
+		<p>An Online Stories app for Android</p>
+		<p>by <strong>Flucoder Apps</strong></p>
+	</ion-card-content>
+</ion-card>
+<ion-card  *ngIf="segmentTab=='about-us'">
+	<ion-list inset>
+	<ion-list-header>
+			Contact Us
+	</ion-list-header>
+		<ion-item appBrowser url="https://flucoder.in" >
+			<ion-icon color="danger" name="help-buoy" item-start></ion-icon>
+			<ion-label>Flucoder Apps</ion-label>
+		</ion-item>
+		<ion-item mailApp emailAddress="info@flucoder.in" >
+			<ion-icon color="secondary" name="mail" item-start></ion-icon>
+			<ion-label>info@flucoder.in</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-card>
+<!-- <ion-card *ngIf="segmentTab=='licenses'">
+	<ion-card-content>
+		<h2>Licenses</h2>
+		<ul><li><strong>IonicFramework</strong>,<br/>Copyright 2015-present Drifty Co</li></ul>	</ion-card-content>
+</ion-card> -->
+
+</ion-content>

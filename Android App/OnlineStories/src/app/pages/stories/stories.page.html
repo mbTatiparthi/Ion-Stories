@@ -1,0 +1,75 @@
+
+
+<!-- custom code -->
+
+	<ion-header page-product-detail-header class="page-product-detail-header">
+		<ion-toolbar color="gray">
+			<ion-buttons slot="start">
+				<ion-menu-button></ion-menu-button>
+			</ion-buttons>
+			<ion-title>Stories</ion-title>
+			<ion-buttons slot="end">
+				<ion-button [routerDirection]="'forward'" [routerLink]="['/stories-bookmarks']">
+					<ion-icon name="heart"></ion-icon>
+					<ion-badge *ngIf="count_bookmarks!=0" color="danger">{{ count_bookmarks }}</ion-badge>
+				</ion-button>
+				<ion-button (click)="showPopover($event)">
+					<ion-icon name="ellipsis-vertical-outline"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+
+	</ion-header>
+
+<!-- ./custom code -->
+
+
+<ion-content page-stories-content class="page-stories-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+	<ion-card *ngIf="filterDataStories.length == 0">
+		<ion-card-content>
+			No item!
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card *ngFor="let item of filterDataStories" >
+		<ion-item>
+			<ion-thumbnail *ngIf="item && item.story_image" slot="start">
+				<img [src]="item.story_image | trustResourceUrl" />
+			</ion-thumbnail>
+          		<ion-card-header *ngIf="item && item.story_title" [routerDirection]="'forward'" [routerLink]="['/','stories-detail',item.id]" >
+			<ion-card-title class="ion-no-padding" [innerHTML]="item.story_title"></ion-card-title>
+		</ion-card-header>
+		</ion-item>
+		<ion-item >
+          <ion-icon name="server-outline" size="small"></ion-icon>
+			<ion-label *ngIf="item && item.category && item.category.rendered">
+				{{ item.category.rendered }}
+			</ion-label>
+          <ion-icon name="time-outline" size="small"></ion-icon>
+			<ion-label *ngIf="item && item.story_date">
+				{{ item.story_date | date:'mediumDate' }}
+			</ion-label>
+          		<ion-fab horizontal="end" vertical="bottom">
+			<button  *ngIf="item && item.story_title" whatsappApp [message]="[item.story_title]" >
+				<ion-icon name="share-social-outline" class="iconSize" color="dark"></ion-icon>
+			</button>
+		</ion-fab>
+		</ion-item>
+		<!--<ion-item lines="none">
+			<ion-button color="danger" fill="outline" slot="end" (click)="saveBookmark(item.id,item)">+ <ion-icon name="heart"></ion-icon></ion-button>
+		</ion-item>
+		<ion-item>
+			<ion-button size="normal" fill="clear" slot="end" [routerDirection]="'forward'" [routerLink]="['/','stories-detail',item.id]"><ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon> more</ion-button>
+		</ion-item> -->
+	</ion-card>
+	
+	<ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>

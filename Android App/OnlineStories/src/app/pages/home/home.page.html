@@ -1,0 +1,61 @@
+
+<ion-header page-home-header class="page-home-header">
+	<ion-toolbar color="gray">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Home</ion-title>
+				<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-home-content class="page-home-content " >
+	
+	<!-- categories -->
+	<ion-item>
+	<ion-card-content>
+		<ion-card-title class="ion-padding-start"><ion-text color="gray">Latest Categories</ion-text></ion-card-title>
+	</ion-card-content>
+		<ion-button slot="end" color="gray" [routerDirection]="'forward'" [routerLink]="['/','categories']"> More</ion-button>
+	</ion-item>
+	<ion-slides class="ion-padding-top" pager="false" *ngIf="dataCategories" [options]="{slidesPerView:3}">
+		<ion-slide *ngFor="let item of dataCategories | slice:0:8" [ngStyle]="{'background':'transparent'}" >
+			<ion-card class="ion-margin" [ngStyle]="{'margin-top':0,'margin-bottom':0}"  [routerDirection]="'forward'" [routerLink]="['/','stories',item.id]">
+				<ion-card-header class="ratio-8x5" [ngStyle]="{'background-image':'url(' + item.category_image + ')','background-size':'70% 90%','background-repeat': 'no-repeat','background-position':'center'}">
+					
+				</ion-card-header>
+				<ion-card-content>
+					<h3 class="ion-padding-top" [innerHTML]="item.category_name"></h3>
+				</ion-card-content>
+			</ion-card>
+		</ion-slide>
+	</ion-slides>
+	<!-- ./categories -->
+	
+	<!-- stories -->
+	<ion-card *ngIf="dataStories">
+		<ion-item>
+		<ion-label>
+			<ion-card-title class="ion-padding-start"><ion-text color="gray">Recent Stories</ion-text></ion-card-title>
+		</ion-label>
+		<ion-button slot="end" color="gray" [routerDirection]="'forward'" [routerLink]="['/','stories']"> More</ion-button>
+		</ion-item>
+		<ion-item *ngFor="let item of dataStories | slice:0:10 " button [routerDirection]="'forward'" [routerLink]="['/','stories-detail',item.id]">
+			<ion-thumbnail slot="start">
+				<img *ngIf="item.story_image" src="{{ item.story_image }}" />
+				<ion-skeleton-text *ngIf="!item.story_image" animated></ion-skeleton-text>
+			</ion-thumbnail>
+			<ion-label>
+				<h3 [innerHTML]="item.story_title"></h3>
+                <p>{{ item.story_date | date:'mediumDate'}}</p>  
+				<p>{{ item.category.rendered | stripTags | readMore:140}}</p>
+			</ion-label>
+		</ion-item>
+	</ion-card>
+	<!-- ./stories -->
+	
+
+</ion-content>

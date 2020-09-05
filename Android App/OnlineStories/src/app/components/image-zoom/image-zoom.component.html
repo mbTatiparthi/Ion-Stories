@@ -1,0 +1,16 @@
+	
+	<ion-buttons slot="start">
+		<ion-button (click)="close($event)">
+			<ion-icon name="arrow-back"></ion-icon>
+		</ion-button>
+	</ion-buttons>
+	<ion-content fullscreen="true" scroll="false" >
+		<ion-slides [options]="sliderOpts" #slider>
+			<ion-slide>
+				<div class="swiper-zoom-container">
+					<img src="{{ img }}" />
+				</div>
+			</ion-slide>
+		</ion-slides>
+	</ion-content>
+	

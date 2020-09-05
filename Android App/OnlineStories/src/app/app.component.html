@@ -1,0 +1,117 @@
+<ion-app>
+	<ion-split-pane contentId="main-content">
+		<ion-menu contentId="main-content" side="start" type="overlay" >
+
+			<ion-header app-sidemenu-header transparent class="ion-padding">
+				<h1 [innerHTML]="appTitle"></h1>
+				<span class="ion-padding-top" [innerHTML]="appSubTitle"></span>
+			</ion-header>
+
+			<ion-content app-sidemenu-content >
+				<ion-list >
+					<ion-menu-toggle auto-hide="false" *ngFor="let m of appMenus" [ngSwitch]="m.item_type">
+				
+						<ion-item  *ngSwitchCase="'title'" class="item-divider"   lines="inset"  >
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'inlink'" [routerDirection]="'root'" [routerLink]="[m.item_link]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+							<ion-badge *ngIf="m.item_badge">{{ m.item_badge }}</ion-badge>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'appbrowser'" appBrowser [url]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'webview'" appWebview [url]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'systembrowser'" systemBrowser [url]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'mail'" mailApp [emailAddress]="[m.item_value]" [emailSubject]="[m.item_desc]" emailMessage="write your message..."   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'sms'" smsApp [phoneNumber]="[m.item_value]" [shortMessage]="[m.item_desc]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'call'" callApp [phoneNumber]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'geo'" geoApp [location]="[m.item_value]" [query]="[m.item_desc]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'playstore'" googlePlayApp [appId]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item  button *ngSwitchCase="'appstore'" appStore [appURL]="[m.item_value]"   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+				
+						<ion-item  button *ngSwitchCase="'app-rate'" appRate   lines="inset" >
+							<ion-icon slot="start" *ngIf="m.item_icon_left" [name]="m.item_icon_left" [color]="m.item_color_icon_left"></ion-icon>
+							<ion-label [color]="m.item_color_label" [innerHTML]="m.item_label">
+								{{m.item_label}}
+							</ion-label>
+							<ion-icon slot="end" *ngIf="m.item_icon_right" [name]="m.item_icon_right" [color]="m.item_color_icon_right"></ion-icon>
+						</ion-item>
+				
+						<ion-item *ngSwitchDefault></ion-item>
+					</ion-menu-toggle>
+				</ion-list>
+			</ion-content>
+		</ion-menu>
+		<ion-router-outlet id="main-content"></ion-router-outlet>
+	</ion-split-pane>
+</ion-app>

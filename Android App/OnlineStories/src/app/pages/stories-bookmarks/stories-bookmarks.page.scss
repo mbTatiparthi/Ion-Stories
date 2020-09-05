@@ -1,0 +1,10 @@
+[page-stories-bookmarks-content]{
+	--background: url("../../../assets/images/background/bg-02.png") no-repeat center center / cover;
+}
+
+	.empty-bookmarks-container{height: 100%;}
+	.empty-bookmarks-wrapper{text-align: center;padding-top: 50%;font-size: 72px;}
+	.empty-bookmarks-wrapper h3{font-variant-caps: petite-caps;font-size: 18px;}
+	ion-card-title{
+      font-family: 'Source Sans Pro', sans-serif;
+	}

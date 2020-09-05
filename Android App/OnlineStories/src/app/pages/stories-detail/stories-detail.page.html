@@ -1,0 +1,94 @@
+
+
+<!-- custom code -->
+
+	<ion-header page-product-detail-header class="page-product-detail-header">
+		<ion-toolbar color="gray">
+			<ion-buttons slot="start">
+				<ion-back-button defaultHref="stories"></ion-back-button>
+			</ion-buttons>
+			<ion-title [innerHTML]="dataStories.story_title"></ion-title>
+			<ion-buttons slot="end">
+				<!-- <ion-button [routerDirection]="'forward'" [routerLink]="['/stories-bookmarks']">
+					<ion-icon name="heart"></ion-icon>
+					<ion-badge *ngIf="count_bookmarks!=0" color="danger">{{ count_bookmarks }}</ion-badge>
+				</ion-button> -->
+              <ion-button color="light" fill="clear" slot="end" (click)="saveBookmark(dataStories.id,dataStories)"><ion-icon name="bookmark-outline"></ion-icon></ion-button>
+				<ion-button (click)="showPopover($event)">
+					<ion-icon name="ellipsis-vertical-outline"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+
+<!-- ./custom code -->
+
+
+<ion-content page-stories-detail-content class="page-stories-detail-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+
+<!--	<ion-card-header class="ion-no-padding">-->
+<!--		<ion-item lines="none">-->
+<!--			<ion-thumbnail slot="start" *ngIf="dataStories && dataStories.story_image">-->
+<!--				<img [src]="dataStories.story_image | trustResourceUrl" />-->
+<!--			</ion-thumbnail>-->
+<!--          	&lt;!&ndash;<ion-card-header class="ion-no-padding" *ngIf="dataStories && dataStories.story_title" >&ndash;&gt;-->
+<!--			<ion-card-title [innerHTML]="dataStories.story_title"></ion-card-title>-->
+<!--		-->
+<!--		</ion-item>-->
+<!--        	<ion-item>-->
+<!--              <ion-icon name="server-outline" size="small"></ion-icon>-->
+<!--			<ion-label *ngIf="dataStories && dataStories.category && dataStories.category.rendered">-->
+<!--				{{ dataStories.category.rendered }}-->
+<!--			</ion-label>-->
+<!--              <ion-icon name="time-outline" size="small"></ion-icon>-->
+<!--			<ion-label *ngIf="dataStories && dataStories.story_date">-->
+<!--				{{ dataStories.story_date }}-->
+<!--			</ion-label>-->
+<!--          	<ion-fab horizontal="end" vertical="bottom">-->
+<!--			<button  *ngIf="dataStories && dataStories.story_title" whatsappApp [message]="[dataStories.story_title]" >-->
+<!--				<ion-icon name="share-social-outline" class="iconSize" color="dark"></ion-icon>-->
+<!--			</button>-->
+<!--		</ion-fab>-->
+<!--		</ion-item>-->
+<!--		</ion-card-header>-->
+	
+	<ion-card *ngIf="dataStories">
+		<ion-card-header class="ion-no-padding">
+			<ion-item lines="none">
+				<ion-thumbnail slot="start" *ngIf="dataStories && dataStories.story_image">
+					<img [src]="dataStories.story_image | trustResourceUrl" />
+				</ion-thumbnail>
+				<!--<ion-card-header class="ion-no-padding" *ngIf="dataStories && dataStories.story_title" >-->
+				<ion-card-title [innerHTML]="dataStories.story_title"></ion-card-title>
+
+			</ion-item>
+			<ion-item>
+				<ion-icon name="server-outline" size="small"></ion-icon>
+				<ion-label *ngIf="dataStories && dataStories.category && dataStories.category.rendered">
+					{{ dataStories.category.rendered }}
+				</ion-label>
+				<ion-icon name="time-outline" size="small"></ion-icon>
+				<ion-label *ngIf="dataStories && dataStories.story_date">
+					{{ dataStories.story_date }}
+				</ion-label>
+				<ion-fab horizontal="end" vertical="bottom">
+					<button  *ngIf="dataStories && dataStories.story_title" whatsappApp [message]="[dataStories.story_title]" >
+						<ion-icon name="share-social-outline" class="iconSize" color="dark"></ion-icon>
+					</button>
+				</ion-fab>
+			</ion-item>
+		</ion-card-header>
+
+		<!--<ion-item lines="none">
+			<ion-button color="danger" fill="outline" slot="end" (click)="saveBookmark(dataStories.id,dataStories)">+ <ion-icon name="heart"></ion-icon></ion-button>
+		</ion-item> -->
+      <ion-label></ion-label>
+		<ion-card-content *ngIf="dataStories && dataStories.story_content" [innerHTML]="dataStories.story_content | trustHtml"></ion-card-content>
+	</ion-card>
+
+</ion-content>

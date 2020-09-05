@@ -1,0 +1,56 @@
+
+<ion-header page-stories-bookmarks-header class="page-stories-bookmarks-header">
+	<ion-toolbar color="gray">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Favorites</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-stories-bookmarks-content class="page-stories-bookmarks-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+	
+	<ion-list class="empty-bookmarks-container" lines="none" *ngIf="dataBookmarks.length == 0">
+		<ion-item>
+			<ion-label class="empty-bookmarks-wrapper">
+				<ion-icon name="heart-outline"></ion-icon>
+				<h3>No item!</h3>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+	
+	
+	<ion-list *ngIf="dataBookmarks.length != 0">
+		<ion-item-sliding *ngFor="let item of dataBookmarks">
+			<ion-item [routerDirection]="'forward'" [routerLink]="['/','stories-detail',item.id]">
+              <ion-thumbnail slot="start" *ngIf="item && item.story_image">
+				<img [src]="item.story_image | trustResourceUrl" />
+			</ion-thumbnail>
+				<ion-label>
+					<ion-card-title *ngIf="item.story_title" [innerHTML]="item.story_title"></ion-card-title>
+					<p *ngIf="item.category.rendered" [innerHTML]="item.category.rendered"></p>
+				</ion-label>
+			</ion-item>
+			<ion-item-options side="end">
+				<ion-item-option color="danger" (click)="removeBookmark(item.id)">Delete</ion-item-option>
+			</ion-item-options>
+			<ion-item-options side="start">
+				<ion-item-option color="primary" [routerDirection]="'forward'" [routerLink]="['/','stories-detail',item.id]">Detail</ion-item-option>
+			</ion-item-options>
+		</ion-item-sliding>
+		<ion-item lines="none">
+			<ion-button fill="solid" (click)="clearBookmarks()" slot="end" color="danger"><ion-icon name="trash"></ion-icon> Delete All</ion-button>
+		</ion-item>
+	</ion-list>
+
+</ion-content>

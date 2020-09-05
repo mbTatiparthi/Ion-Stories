@@ -1,0 +1,34 @@
+[page-home-content]{
+	--background: url("../../../assets/images/background/bg-02.png") no-repeat center center / cover;
+}
+
+	ion-slide {background-size:cover; display:block !important; min-height:150px}
+	ion-slide .ratio-1x1 {width: 100%;padding-top: 100%; position: relative;}
+	ion-slide .ratio-16x9 {width: 100%;padding-top: 56.25%; position: relative;}
+	ion-slide .ratio-4x3 {width: 100%;padding-top: 75%; position: relative;}
+	ion-slide .ratio-3x2 {width: 100%;padding-top: 66.66%; position: relative;}
+	ion-slide .ratio-8x5 {width: 100%;padding-top: 62.5%; position: relative;}
+	ion-slide > h2{padding-top:1em;padding-left:1em;padding-right:1em;padding-bottom:0;color: #fff;text-shadow: 1px 1px 1px #777;opacity: .9;}
+	ion-slide > p{padding-top:0;padding-left:1em;color: #fff;opacity: .9;padding-right:1.8rem;text-shadow: 1px 1px 1px #777;}
+	ion-card {
+		--background: #fff;
+		opacity:1;
+		margin: 5px !important;
+	}
+
+	ion-card-subtitle{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	}
+	ion-card-title{
+	font-family: 'Source Sans Pro', sans-serif;
+	border-left: 4px solid #333333;
+	}
+	p{
+	 font-family: 'Source Sans Pro', sans-serif;
+	}
+	h3{
+	padding: 0 0 !important;
+	font-size: 17px !important;
+	font-family: 'Source Sans Pro', sans-serif;
+	}

@@ -1,0 +1,22 @@
+[page-stories-content]{
+	--background: url("../../../assets/images/background/bg-02.png") no-repeat center center / cover;
+}
+
+	ion-card {
+		--background: #fff;
+		opacity:0.8;
+      font-family: 'Source Sans Pro', sans-serif;
+	}
+
+	ion-card-title{
+	font-family: 'Source Sans Pro', sans-serif;
+	}
+
+	ion-label-md{
+	font-family: 'Source Sans Pro', sans-serif;
+	}
+
+	.iconSize{
+      font-size: 24px !important;
+	}
+

@@ -1,0 +1,195 @@
+// http://ionicframework.com/docs/theming/
+
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+
+/** COLOR **/
+
+.ion-color-transparent{
+	--ion-color-base: var(--ion-color-transparent);
+	--ion-color-base-rgb: var(--ion-color-transparent-rgb);
+	--ion-color-contrast: var(--ion-color-transparent-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-transparent-contrast-rgb);
+	--ion-color-shade: var(--ion-color-transparent-shade);
+	--ion-color-tint: var(--ion-color-transparent-tint);
+}
+
+/** CUSTOM COLOR **/
+
+
+.ion-color-gray{
+	--ion-color-base: var(--ion-color-gray);
+	--ion-color-base-rgb: var(--ion-color-gray-rgb);
+	--ion-color-contrast: var(--ion-color-gray-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-gray-contrast-rgb);
+	--ion-color-shade: var(--ion-color-gray-shade);
+	--ion-color-tint: var(--ion-color-gray-tint);
+}
+
+button{
+	background-color: transparent;
+}
+
+
+/** TYPOGRAPHY  **/
+
+:focus {
+	outline: none;
+}
+
+ion-card-content{
+
+	p{
+		margin-top: 0;
+		margin-bottom: .5em !important;
+		font-size: 1.2rem !important;
+	}
+
+	.underline{
+		text-decoration: underline !important;
+	}
+
+	.underline{
+		text-decoration: underline !important;
+	}
+
+	.italic{
+		font-style: italic !important;
+	}
+
+	.visible{
+		visibility: visible !important;
+	}
+
+	.strong{
+		font-weight: bold !important;
+	}
+
+	blockquote {
+		border-left: 3px solid #ddd;
+		margin-left: 0;
+		padding-left: 1em;
+		background:#fdfdfd;
+	}
+	
+	table {
+		width: 100%;
+		border: 1px solid #ddd;
+	}
+
+	table td{
+		border: 1px solid #ddd;
+		padding: .5em;
+	}
+
+	table th{
+		border: 1px solid #ddd;
+		padding: .5em;
+	}
+
+	table.noborder,table.no-border{
+		border: 0;
+	}
+	table.noborder td,table.no-border td{
+		border: 0;
+		padding-top: .5em;
+		padding-bottom: .5em;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	table.noborder th,table.no-border th{
+		border: 0;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 2em !important;
+		margin-bottom: 1em !important;
+		font-weight: 500 !important;
+		line-height: 1.2 !important;
+	}
+
+	figure{
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
+	}
+
+	img,iframe{
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.align-left{
+		float: left;
+		margin-right: 1em;
+	}
+
+	.align-right{
+		float: right;
+		margin-left: 1em;
+	}
+
+	.align-center{
+		clear: both;
+		display: block;
+		margin: 0 auto;
+	}
+
+
+	.text-left{
+		text-align: left !important;
+	}
+
+	.text-right{
+		text-align: right !important;
+	}
+
+	.text-center{
+		text-align: center !important;
+	}
+
+}
+
+
+
+/** SIDE MENUS **/
+
+[app-sidemenu-header]{
+	background-image: url('assets/images/background/expanded-menu.png');
+	height: 200px;
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	h1{
+		color: white;
+		margin-top: 2rem;
+		font-size: 3rem;
+	}
+	span{
+		color: white;
+	}
+}
+
+[app-sidemenu-content]{
+	--ion-item-background: transparent !important;
+	background: url('assets/icon/logo.png');
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	ion-list{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+

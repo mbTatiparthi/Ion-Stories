@@ -1,0 +1,50 @@
+
+<ion-header page-categories-header class="page-categories-header">
+	<ion-toolbar color="gray">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Categories</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="showPopover($event)"><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content page-categories-content class="page-categories-content " >
+	
+	<ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+	<ion-card *ngIf="filterDataCategories.length == 0">
+		<ion-card-content>
+			No item!
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-grid fixed>
+		<ion-row>
+			<ion-col size="4"  *ngFor="let item of filterDataCategories" >
+				<ion-card class="ion-no-margin">
+		<ion-card-content  class="ion-no-padding" *ngIf="item && item.category_image" [routerDirection]="'forward'" [routerLink]="['/','stories',item.id]">
+			<img [src]="item.category_image | trustResourceUrl"/>
+		</ion-card-content>
+		<ion-card-header *ngIf="item && item.category_name" >
+			<ion-card-title class="ion-text-center" [innerHTML]="item.category_name"></ion-card-title>
+		</ion-card-header>
+<!-- 		<ion-item>
+			<ion-button size="normal" fill="clear" slot="end" [routerDirection]="'forward'" [routerLink]="['/','stories',item.id]"><ion-icon name="ellipsis-vertical-outline" slot="start"></ion-icon> more</ion-button>
+		</ion-item> -->
+					</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	
+	<ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>
